@@ -1,3 +1,19 @@
 {
-    "users": []
+  "users": [
+    {
+      "name": "JPEGreg",
+      "age": 69,
+      "id": 1
+    },
+    {
+      "name": "JPEGreg",
+      "age": 69,
+      "id": 2
+    },
+    {
+      "name": "JPEGreg",
+      "age": 69,
+      "id": 3
+    }
+  ]
 }
