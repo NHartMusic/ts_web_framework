@@ -1,19 +1,14 @@
 {
   "users": [
     {
-      "name": "JPEGreg",
-      "age": 69,
-      "id": 1
+      "id": 1,
+      "name": "Billiam",
+      "age": 45
     },
     {
-      "name": "JPEGreg",
-      "age": 69,
+      "name": "Yungus",
+      "age": 700,
       "id": 2
-    },
-    {
-      "name": "JPEGreg",
-      "age": 69,
-      "id": 3
     }
   ]
 }
