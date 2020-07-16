@@ -2,4 +2,8 @@ import { User } from './models/User'
 
 const user = new User({ name: 'Yungus', age: 700 })
 
-user.save()
+user.events.on('change', () => {
+    console.log('fuck jk rowling')
+})
+
+user.events.trigger('change')
