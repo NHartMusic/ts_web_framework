@@ -1,9 +1,11 @@
 import { User } from './models/User'
 
-const user = new User({ id: 1, name: 'Bitch', age: 0 })
+const user = User.buildUser({ id: 2, name: 'ho' })
 
-user.on('save', () => {
+user.on('change', () => {
     console.log(user)
 })
 
-user.save()
+user.fetch()
+
+user.isAdminUser()
