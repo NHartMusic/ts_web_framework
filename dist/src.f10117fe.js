@@ -129,27 +129,45 @@ var UserForm =
 /** @class */
 function () {
   function UserForm(parent, model) {
+    var _this = this;
+
     this.parent = parent;
     this.model = model;
+
+    this.onSetAgeClick = function () {
+      _this.model.setRandomAge();
+    };
+
+    this.onSetNameClick = function () {
+      var input = _this.parent.querySelector('input');
+
+      var name = input.value;
+
+      _this.model.set({
+        name: name
+      });
+    };
+
+    this.bindModel();
   }
+
+  UserForm.prototype.bindModel = function () {
+    var _this = this;
+
+    this.model.on('change', function () {
+      _this.render();
+    });
+  };
 
   UserForm.prototype.eventsMap = function () {
     return {
-      'click:button': this.onButtonClick,
-      'mouseover:h1': this.onHeaderHover
+      'click:.set-age': this.onSetAgeClick,
+      'click:.set-name': this.onSetNameClick
     };
   };
 
-  UserForm.prototype.onButtonClick = function () {
-    console.log('hi bitch');
-  };
-
-  UserForm.prototype.onHeaderHover = function () {
-    console.log('i will fuck your mom');
-  };
-
   UserForm.prototype.template = function () {
-    return "\n            <div> \n                <h1>FTGD</h1>\n                <div>User Name: " + this.model.get('name') + " </div>\n                <div>User Age: " + this.model.get('age') + " </div>\n                <input />\n                <button>hell yeah</button>\n            </div>\n            \n         ";
+    return "\n            <div> \n                <h1>FTGD</h1>\n                <div>User Name: " + this.model.get('name') + " </div>\n                <div>User Age: " + this.model.get('age') + " </div>\n                <input />\n                <button class='set-name'>Change Name </button>\n                <button class='set-age'>Set Random Age</button>\n            </div>\n            \n         ";
   };
 
   UserForm.prototype.bindEvents = function (fragment) {
@@ -171,6 +189,7 @@ function () {
   };
 
   UserForm.prototype.render = function () {
+    this.parent.innerHTML = '';
     var templateElement = document.createElement('template');
     templateElement.innerHTML = this.template();
     this.bindEvents(templateElement.content);
@@ -2235,6 +2254,13 @@ function (_super) {
   User.buildUserCollection = function () {
     return new Collection_1.Collection('http://localhost:3000/users', function (json) {
       return User.buildUser(json);
+    });
+  };
+
+  User.prototype.setRandomAge = function () {
+    var age = Math.round(Math.random() * 100);
+    this.set({
+      age: age
     });
   };
 
