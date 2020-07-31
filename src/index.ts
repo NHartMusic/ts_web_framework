@@ -1,11 +1,8 @@
-import { User } from './models/User'
+import { UserForm } from './views/UserForm'
 
-const user = User.buildUser({ id: 2, name: 'ho' })
+const userForm = new UserForm(
+    document.getElementById('root')
+)
 
-user.on('change', () => {
-    console.log(user)
-})
+userForm.render()
 
-user.fetch()
-
-user.isAdminUser()
