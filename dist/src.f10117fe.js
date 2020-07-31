@@ -132,8 +132,18 @@ function () {
     this.parent = parent;
   }
 
+  UserForm.prototype.eventsMap = function () {
+    return {
+      'click:button': this.onButtonClick
+    };
+  };
+
+  UserForm.prototype.onButtonClick = function () {
+    console.log('hi bitch');
+  };
+
   UserForm.prototype.template = function () {
-    return "\n            <div> \n                <h1>FTGD</h1>\n                <input />\n            </div>\n            <template></template>\n         ";
+    return "\n            <div> \n                <h1>FTGD</h1>\n                <input />\n                <button>hell yeah</button>\n            </div>\n            \n         ";
   };
 
   UserForm.prototype.render = function () {
